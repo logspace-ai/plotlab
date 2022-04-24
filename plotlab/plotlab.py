@@ -1,3 +1,4 @@
+import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -18,32 +19,34 @@ class Figure:
 
     def __init__(self):
         self.fig = go.Figure()
+        self.cmap = px.colors.qualitative.Plotly
 
     def __call__(self):
         return self.fig
 
-    # Configuration for the plot
-    def set_title_and_axes_labels(self, title, xtitle, ytitle, **kwargs):
-        self.fig.update_layout(
-            title={"text": title, "x": 0.5, "y": 0.95},
-            font=dict(
-                size=12,
-            ),
-            xaxis=dict(
-                title=xtitle,
-            ),
-            yaxis=dict(
-                title=ytitle,
-            ),
-            # legend={"font_size": 10, "orientation": "v", "x": 0.3, "y": 1.11},
-            uniformtext=dict(mode="hide", minsize=12),
-            **kwargs,
-        )
+    # Plot settings
+    # def set_title_and_axes_labels(self, title, xtitle, ytitle, **kwargs):
+    #     self.fig.update_layout(
+    #         title={"text": title, "x": 0.5, "y": 0.95},
+    #         font=dict(
+    #             size=12,
+    #         ),
+    #         xaxis=dict(
+    #             title=xtitle,
+    #         ),
+    #         yaxis=dict(
+    #             title=ytitle,
+    #         ),
+    #         # legend={"font_size": 10, "orientation": "v", "x": 0.3, "y": 1.11},
+    #         uniformtext=dict(mode="hide", minsize=12),
+    #         **kwargs,
+    #     )
 
     def xaxes_setting(self, **kwargs):
         self.fig.update_xaxes(**kwargs)
 
     def set_plot_size(self, width=1350, height=650, **kwargs):
+        # ? Add this to init?
         self.fig.update_layout(
             width=width,
             height=height,
@@ -117,6 +120,7 @@ class Figure:
                 x=series,
                 y=series.index,
                 orientation="h",
+                name=series.name,
                 **kwargs,
             )
         )
@@ -128,6 +132,7 @@ class Figure:
                 y=series,
                 mode="lines",
                 line=dict(width=1.5, dash=dash, **kwargs),
+                name=series.name,
             )
         )
 
@@ -160,6 +165,7 @@ class Figure:
                 mode="lines",
                 line=dict(width=1.5),
                 fill="tozeroy",
+                name=series.name,
                 **kwargs,
             )
         )
@@ -169,6 +175,7 @@ class Figure:
             go.Bar(
                 x=series.index,
                 y=series,
+                name=series.name,
                 **kwargs,
             )
         )
@@ -180,10 +187,12 @@ class Figure:
                 x=series.index,
                 y=series,
                 width=1,
+                name=series.name,
                 marker=dict(
                     line=dict(width=0.6, color=color),
                     opacity=opacity,
                     color=color,
+
                     **kwargs,
                 ),
             )
@@ -195,6 +204,7 @@ class Figure:
                 x=series.index,
                 y=series,
                 mode=mode,
+                name=series.name,
                 **kwargs,
             )
         )
@@ -274,6 +284,9 @@ class Figure:
 
     def clear(self):
         self.fig = go.Figure()
+
+    def show(self):
+        return self()
 
 
 class Subplot(Figure):
