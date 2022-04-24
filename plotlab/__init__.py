@@ -1,1 +1,1 @@
-from .core import hmm
+from .plotlab import Figure, Subplot

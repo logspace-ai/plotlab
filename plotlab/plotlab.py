@@ -19,6 +19,9 @@ class Figure:
     def __init__(self):
         self.fig = go.Figure()
 
+    def __call__(self):
+        return self.fig
+
     # Configuration for the plot
     def set_title_and_axes_labels(self, title, xtitle, ytitle, **kwargs):
         self.fig.update_layout(
@@ -90,23 +93,23 @@ class Figure:
         )
 
     # Add charts
-    def add_y2(self, title, **kwargs):
-        self.fig.update_layout(
-            yaxis2=dict(
-                title=title,
-                # titlefont=dict(color="#d62728"),
-                # tickfont=dict(color="#d62728"),
-                anchor="x",
-                overlaying="y",
-                side="right",
-                **kwargs,
-            ),
-            legend=dict(
-                x=1.07,
-                y=1,
-            ),
-            **kwargs,
-        )
+    # def add_y2(self, title, **kwargs):
+    #     self.fig.update_layout(
+    #         yaxis2=dict(
+    #             title=title,
+    #             # titlefont=dict(color="#d62728"),
+    #             # tickfont=dict(color="#d62728"),
+    #             anchor="x",
+    #             overlaying="y",
+    #             side="right",
+    #             **kwargs,
+    #         ),
+    #         legend=dict(
+    #             x=1.07,
+    #             y=1,
+    #         ),
+    #         **kwargs,
+    #     )
 
     def hbar(self, series, **kwargs):
         self.fig.add_trace(
@@ -129,6 +132,7 @@ class Figure:
         )
 
     def bar_dataframe(self, x, y, **kwargs):
+        # TODO: Document
         self.fig.add_trace(
             go.Bar(
                 x=x,
@@ -137,16 +141,16 @@ class Figure:
             )
         )
 
-    def line_y2(self, series, yaxis="y2", mode="lines+markers", **kwargs):
-        self.fig.add_trace(
-            go.Scatter(
-                x=series.index,
-                y=series,
-                mode=mode,
-                yaxis=yaxis,
-                **kwargs,
-            )
-        )
+    # def line_y2(self, series, yaxis="y2", mode="lines+markers", **kwargs):
+    #     self.fig.add_trace(
+    #         go.Scatter(
+    #             x=series.index,
+    #             y=series,
+    #             mode=mode,
+    #             yaxis=yaxis,
+    #             **kwargs,
+    #         )
+    #     )
 
     def area(self, series, **kwargs):
         self.fig.add_trace(
@@ -170,6 +174,7 @@ class Figure:
         )
 
     def linebar(self, series, color="gray", opacity=0.5, **kwargs):
+        # TODO: Fix width (might need to be relative)
         self.fig.add_trace(
             go.Bar(
                 x=series.index,
@@ -199,6 +204,7 @@ class Figure:
         self.scatter(series)
 
     def waterfall(self, df, measure, x_values, text, y_values, orientation="v"):
+        #TODO: Document
         """
         DATAFRAME REQUIRES PRE-PROCESSING FOR PLOT
             df: dataframe
@@ -221,6 +227,7 @@ class Figure:
         )
 
     def background(self, series, text, color, opacity):
+        # TODO: Document
         self.fig.add_vrect(
             x0=series.index.min(),
             x1=series.index.max(),
@@ -233,12 +240,20 @@ class Figure:
         )
 
     def time_buttons(self, buttons_dict):
+        # TODO: Document
         self.fig.update_xaxes(rangeselector={"buttons": buttons_dict})
 
     def hline(self, y_value, **kwargs):
+        # TODO: Allow list as input or other types
+        # TODO: Add vline
         self.fig.add_hline(y=y_value, **kwargs)
 
-    def threshline(self, series, up_thresh, down_thresh, up_color, down_color):
+    def vline(self, x_value, **kwargs):
+        self.fig.add_vline(x=x_value, **kwargs)
+
+    def threshline(self, series, up_thresh, down_thresh, up_color='green', down_color='red'):
+        # TODO: Improve colors
+        # TODO: Use vline instead
 
         up_df = series[series > up_thresh].index
         down_df = series[series < down_thresh].index
@@ -257,11 +272,12 @@ class Figure:
                 line_color=down_color,
             )
 
-    def plot(self):
-        return self.fig
+    def clear(self):
+        self.fig = go.Figure()
 
 
 class Subplot(Figure):
+    # TODO: Document
 
     """
     Child class of Figure.
