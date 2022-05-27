@@ -32,14 +32,13 @@ We've released Plotlab because it helps us better scale and supports the many OS
 
 ## Contact
 
-We have a few channels for contact:
-
 
 ## Contributors
 
 This project exists thanks to all the people who contribute. 
 
 ## License
+  Plotlab is [MIT licensed](./LICENSE).
 
 
 
