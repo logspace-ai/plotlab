@@ -4,7 +4,6 @@
 </h1>
   
 <p align="center">
-<img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/logspace-ai/plotlab" />
 <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/logspace-ai/plotlab" />
 <img alt="" src="https://img.shields.io/github/repo-size/logspace-ai/plotlab" />
 <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/logspace-ai/plotlab" />
