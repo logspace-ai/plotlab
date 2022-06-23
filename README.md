@@ -18,7 +18,7 @@
 </p>
   
   
-## Easy. Simple. Plot.
+## Embarassingly simple plots.
 ## Introduction
 
 
