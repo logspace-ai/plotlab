@@ -1,6 +1,6 @@
 <h1 align="center">
-  <p align="center">Plotlab</p>
   <a href="https://logspace.ai/"><img src="https://user-images.githubusercontent.com/80289056/170767747-f1c98cbf-bdbc-4619-8d2f-08b202a4db6c.png" width="600px" />
+  <p align="center">Embarassingly simple plotting.</p>
 </h1>
   
 <p align="center">
@@ -16,6 +16,7 @@
 <img alt="GitHub Closed Pull Requests" src="https://img.shields.io/github/issues-pr-closed/logspace-ai/plotlab" />
 <img alt="GitHub Commit Activity (Year)" src="https://img.shields.io/github/commit-activity/y/logspace-ai/plotlab" />  
 </p>
+  
   
 ## Introduction
 
