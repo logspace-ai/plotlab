@@ -137,7 +137,7 @@ class Figure:
         )
 
     def bar_dataframe(self, x, y, **kwargs):
-        # TODO: Document
+        # TODO: Document and improve
         self.fig.add_trace(
             go.Bar(
                 x=x,
@@ -181,7 +181,7 @@ class Figure:
         )
 
     def linebar(self, series, color="gray", opacity=0.5, **kwargs):
-        # TODO: Fix width (might need to be relative)
+        # BUG: Fix width (might need to be relative)
         self.fig.add_trace(
             go.Bar(
                 x=series.index,
@@ -189,7 +189,7 @@ class Figure:
                 width=1,
                 name=series.name,
                 marker=dict(
-                    line=dict(width=0.6, color=color),
+                    line=dict(width=0.00001, color=color),
                     opacity=opacity,
                     color=color,
 
