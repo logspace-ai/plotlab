@@ -17,6 +17,8 @@
 <img alt="GitHub Commit Activity (Year)" src="https://img.shields.io/github/commit-activity/y/logspace-ai/plotlab" />  
 </p>
   
+  
+## Easy. Simple. Plot.
 ## Introduction
 
 
